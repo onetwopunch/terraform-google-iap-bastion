@@ -66,3 +66,8 @@ variable "service_account_iam_roles" {
   ]
   description = "List of IAM roles to assign to the service account."
 }
+
+variable "additional_service_account_iam_roles" {
+  default = []
+  description = "Additional Service account roles on top of the standard logging and monitoring roles"
+}

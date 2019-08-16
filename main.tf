@@ -20,6 +20,13 @@ resource "google_project_iam_member" "service_account" {
   member  = "serviceAccount:${google_service_account.bastion.email}"
 }
 
+resource "google_project_iam_member" "additional_service_account" {
+  count   = length(var.additional_service_account_iam_roles)
+  project = var.project
+  role    = element(var.service_account_iam_roles, count.index)
+  member  = "serviceAccount:${google_service_account.bastion.email}"
+}
+
 resource "google_compute_instance" "bastion" {
   project = var.project
   zone    = var.zone
