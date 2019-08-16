@@ -5,6 +5,7 @@ provider "google" {
 
 locals{
   subnet_project = (var.subnet_project == null ? var.project : var.subnet_project)
+  metadata = (var.enable_oslogin == true ? {"enable-oslogin" : "TRUE"} : {})
 }
 
 resource "google_service_account" "bastion" {

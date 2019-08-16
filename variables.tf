@@ -19,7 +19,7 @@ variable "subnet" {
 
 variable "subnet_project" {
   description = "Project where the subnet exists, if different than the bastion project"
-  default = null
+  default = ""
 }
 
 variable "instance_name" {
@@ -49,6 +49,11 @@ variable "image" {
 
 variable "shielded_vm" {
   description = "Must use a supported image if true"
+  default = true
+}
+
+variable "enable_oslogin" {
+  description = "Enable OS Login for SSH access"
   default = true
 }
 
