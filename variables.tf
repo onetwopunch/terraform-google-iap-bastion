@@ -47,7 +47,7 @@ variable "image" {
   default = "gce-uefi-images/centos-7"
 }
 
-variable "sheilded_vm" {
+variable "shielded_vm" {
   description = "Must use a supported image if true"
   default = true
 }
