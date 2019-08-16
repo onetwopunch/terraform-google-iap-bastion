@@ -5,7 +5,7 @@ Google Cloud provides a way to access compute instances that are on private subn
 ## Usage
 
 ```
-module "iap-bastion" {
+module "iap_bastion" {
   source = "onetwopunch/iap-bastion/google"
   version = "0.1.1"
 
@@ -26,9 +26,9 @@ resource "google_compute_firewall" "allow_access_from_bastion" {
     ports    = ["22"]
   }
 
-  # Allow SSH only from IAP
-  source_ranges           = ["35.235.240.0/20"]
-  target_service_accounts = [google_service_account.bastion.email]
+  # Allow SSH only from IAP Bastion
+  source_service_accounts = [module.iap_bastion.service_account]
+  target_tags = ["bastion-ssh"]
 }
 ```
 
