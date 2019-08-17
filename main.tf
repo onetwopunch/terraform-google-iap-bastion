@@ -23,7 +23,7 @@ resource "google_project_iam_member" "service_account" {
 resource "google_project_iam_member" "additional_service_account" {
   count   = length(var.additional_service_account_iam_roles)
   project = var.project
-  role    = element(var.service_account_iam_roles, count.index)
+  role    = element(var.additional_service_account_iam_roles, count.index)
   member  = "serviceAccount:${google_service_account.bastion.email}"
 }
 
